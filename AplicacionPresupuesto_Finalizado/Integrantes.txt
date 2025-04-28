@@ -13,6 +13,7 @@ Integrantes
 .Maria Sandra Ramirez PR243125
 
 Enlace al repositorio de GitHub:
+https://github.com/ErickCGz97/DAW_AplicacionPresupuesto.git
 
 Enlace al video en YouTube:
 

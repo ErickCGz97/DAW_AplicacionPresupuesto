@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Aplicación de Presupuesto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: white;
+      color: #ffffff;
+    }
+
+    h1 {
+      color: black;
+    }
+
+    .navbar,
+    .card-header {
+      background-color: #003366;
+      color: white;
+    }
+
+    .bg-primary,
+    .bg-success,
+    .bg-danger {
+      background-color: #003366 !important;
+    }
+
+    .btn-primary {
+      background-color: #003366;
+      border-color: #003366;
+    }
+
+    .btn-primary:hover {
+      background-color: #002244;
+      border-color: #002244;
+    }
+
+    .card {
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+    }
+
+    .list-group-item {
+      background-color: #f8f9fa;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+    }
+
+    .nav-tabs .nav-link.active {
+      background-color: #003366;
+      border-color: #003366;
+      color: white;
+    }
+
+    .nav-tabs .nav-link {
+      color: #003366;
+      border: 1px solid transparent;
+    }
+
+    .nav-tabs {
+      border-bottom: 1px solid #003366;
+    }
+
+    #ingresos-total {
+      color: white;
+    }
+
+    #egresos-total {
+      color: white;
+    }
+
+    #presupuesto-total {
+      color: white;
+    }
+
+    #porcentaje-egresos {
+      color: white;
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container my-4">
+    <!-- Encabezado -->
+    <div class="text-center mb-4">
+      <h1 id="titulo-presupuesto">Presupuesto de [mes] [año]</h1>
+    </div>
+
+    <!-- Resumen -->
+    <div class="row text-center mb-4">
+      <div class="col-md-4">
+        <div class="bg-primary rounded p-3">
+          <h4>Total Disponible</h4>
+          <h3 id="presupuesto-total">$0.00</h3>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="bg-success rounded p-3">
+          <h4>Ingresos</h4>
+          <h3 id="ingresos-total">$0.00</h3>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="bg-danger rounded p-3">
+          <h4>Egresos</h4>
+          <h3 id="egresos-total">$0.00</h3>
+          <p id="porcentaje-egresos">0%</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agregar Transacción -->
+    <div class="card mb-4">
+      <div class="card-header"><b>Nueva Transacción</b></div>
+      <div class="card-body">
+        <form id="form-transaccion" class="row g-3">
+          <div class="col-md-3">
+            <select id="tipo-transaccion" class="form-select" required>
+              <option value="ingreso">Ingreso</option>
+              <option value="egreso">Egreso</option>
+            </select>
+          </div>
+          <div class="col-md-5">
+            <input type="text" id="descripcion" class="form-control" placeholder="Descripción" required>
+          </div>
+          <div class="col-md-2">
+            <input type="number" id="monto" class="form-control" placeholder="Monto" min="0.01" step="0.01" required>
+          </div>
+          <div class="col-md-2">
+            <button id="agregar-transaccion" class="btn btn-primary w-100">Agregar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Detalles de Transacciones -->
+    <ul class="nav nav-tabs mb-3" id="tabsTransacciones">
+      <li class="nav-item">
+        <a class="nav-link active" data-bs-toggle="tab" href="#ingresos">Ingresos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#egresos">Egresos</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="ingresos">
+        <ul id="lista-ingresos" class="list-group">
+          <li class="list-group-item text-muted text-center py-4" id="ingresos-vacio">
+            No hay ingresos registrados
+          </li>
+        </ul>
+      </div>
+      <div class="tab-pane fade" id="egresos">
+        <ul id="lista-egresos" class="list-group">
+          <li class="list-group-item text-muted text-center py-4" id="egresos-vacio">
+            No hay egresos registrados
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/IngresosyEgresos.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
